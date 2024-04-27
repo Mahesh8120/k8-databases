@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: rabbitmq
-        image: "mahesh8120/rabbitmq:{{ .Values.statefulset.imageVersion }}"
+        image: rabbitmq
         volumeMounts:
         - name: rabbitmq
           mountPath: /data/db
