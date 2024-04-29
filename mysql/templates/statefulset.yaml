@@ -25,9 +25,16 @@ spec:
       containers:
       - name: mysql
         image: "mahesh8120/mysql:{{ .Values.statefulset.imageVersion }}"
+        args:
+        - "--ignore-db-dir=lost+found"
+        envFrom:
+        - configMapRef:
+            name: mysql
+        - secretRef:
+            name: mysql
         volumeMounts:
         - name: mysql
-          mountPath: /data/db
+          mountPath: /var/lib/mysql
   volumeClaimTemplates:
   - metadata:
       name: mysql
